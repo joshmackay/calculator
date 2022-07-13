@@ -1,9 +1,7 @@
-@font-face {
-    font-family: segment;
-    src: url(fonts/seven_segment/seven_Segment.ttf);
-}
+
 
 *{
+    box-sizing: border-box;
     margin:0;
     padding:0;
 }
@@ -20,8 +18,6 @@ body{
     background-color: rgb(255, 250, 244);
 }
 
-
-
 .calc-frame{
     display: flex;
     flex-direction: column;
@@ -35,14 +31,14 @@ body{
 }
 
 .display{
+    font-family: 'Roboto', sans-serif;
     max-width: 100%;
     display: flex;
     flex-direction: column;
     align-items: flex-end;
     justify-content: flex-end;
     flex-wrap: wrap;
-    min-height: 60px;
-    font-family: segment;
+    min-height: 100px;
     font-size: 40px;
     border: 1px solid gray;
     background-color: rgb(233, 234, 255);
@@ -51,13 +47,15 @@ body{
 }
 
 .all-operations{
-
+    font-family: 'Roboto', sans-serif;
+    min-height: 50px;
 }
 
 .current-operation{
     display: flex;
     overflow-wrap:anywhere;
     text-align: end;
+    min-height: 50px;
 }
 
 .button-row{
