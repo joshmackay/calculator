@@ -4,6 +4,7 @@
     box-sizing: border-box;
     margin:0;
     padding:0;
+    font-family: 'Roboto', sans-serif;
 }
 
 body{
@@ -15,19 +16,50 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgb(255, 250, 244);
+    background-color: rgb(211, 198, 170);
 }
 
 .calc-frame{
     display: flex;
     flex-direction: column;
-    width: 300px;
-    gap: 10px;
+    width: 500px;
+    gap: 20px;
     padding: 30px;
-    border: 1px solid black;
-    box-shadow: 0px 0px 10px 5px rgba(85, 85, 85, 0.727) inset;
+    box-shadow: 15px 15px 20px 10px rgba(63, 63, 63, 0.727), 10px 10px 10px 1px rgba(233, 233, 233, 0.846) inset, -10px -10px 10px 1px rgba(85, 85, 85, 0.727) inset;
     border-radius: 20px;
-    background-color: rgb(109, 214, 200);
+    background-color: rgb(184, 184, 184);
+}
+
+.decorations{
+    display: flex;
+    justify-content: space-between;
+    height: 100%;
+    align-items:center;
+}
+
+.brand{
+ width: 25%;
+}
+
+.solar-container{
+    display: flex;
+    background-color: rgb(99, 61, 22);
+    width: 140px;
+    height: 30px;
+    border: 5px rgb(190, 190, 190) inset;
+}
+
+.solar-cell{
+    width: 25%;
+    border-right: 1px solid rgba(45, 45, 45, 0.489);
+}
+
+.last-cell{
+    border: 0;
+}
+
+.model{
+    width: 25%;
 }
 
 .display{
@@ -40,9 +72,10 @@ body{
     flex-wrap: wrap;
     min-height: 100px;
     font-size: 40px;
-    border: 1px solid gray;
+    border: 5px rgb(190, 190, 190) inset;
     background-color: rgb(233, 234, 255);
     padding:10px;
+    
     
 }
 
@@ -60,18 +93,29 @@ body{
 
 .button-row{
     display: flex;
-    gap: 10px;
+    gap: 20px;
 }
 
 .buttons{
     display: flex;
     flex-direction: column;
-    gap:10px;
+    gap:20px;
 }
 
 button{
+    font-size: 20px;
     width: 80px;
     height: 60px;
     flex-shrink: 1;
     flex-grow: 1;
+    border: 3px rgb(151, 151, 151) outset;
+    box-shadow: 2px 2px 5px 2px rgba(86, 86, 86, 0.77);
+}
+
+[data-clear]{
+    background-color: rgb(253, 133, 133);
+}
+
+[data-delete]{
+    background-color: rgb(247, 255, 134);
 }

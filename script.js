@@ -21,6 +21,7 @@ let firstOperand = '';
 let secondOperand = '';
 let currentOperator = null;
 let clearCurrentScreenFlag = false;
+let keyValue = null;
 
 function clearCurrentScreen(){
     currentOperation.innerText = '';
@@ -28,7 +29,12 @@ function clearCurrentScreen(){
 }
 
 function keyPress(e){
-    console.log(e);
+    keyValue = e.key;5
+    if(keyValue >= 0 && keyValue <= 9 || keyValue === '.') storeNumber(keyValue)
+    if(keyValue === 'Enter' || keyValue === '=') evaluate();
+    if(keyValue === 'Backspace') deleteCurrentOperation()
+    if(keyValue === '/' || keyValue === '*' || keyValue === '-' || keyValue === '+')setOperation(keyValue);
+    if(keyValue === 'Escape')clearAll()
 }
 
 function deleteCurrentOperation(){
@@ -49,7 +55,7 @@ function initialise(){
 
 function storeNumber(number){
     if(currentOperation.innerText.includes('.') && number === '.') return
-    if(currentOperation.textContent == '0' || clearCurrentScreenFlag){
+    if(currentOperation.textContent === '0' || clearCurrentScreenFlag){
         clearCurrentScreen();
     }
     currentOperation.innerText += number;
@@ -65,9 +71,10 @@ function setOperation(operator){
 
 function evaluate(){
     if(currentOperator === null || clearCurrentScreenFlag) return
-    if(currentOperator.textContent == '÷' && currentOperation === '0'){return alert('Cannot divide by zero')};
+    if(currentOperator === '÷' && currentOperation.textContent == '0'){
+        console.log('error')
+        return alert('Cannot divide by zero')};
     secondOperand = currentOperation.innerText;
-    console.log(secondOperand);
     currentOperation.textContent = operate(currentOperator, Number(firstOperand), Number(secondOperand)).toFixed(2);
     allOperations.textContent = `${firstOperand} ${currentOperator} ${secondOperand} =`;
     currentOperator = null;
@@ -78,6 +85,8 @@ function operate(operator, x, y){
         case 'x':
             return x * y;
         case '÷':
+            return x / y;
+        case '/':
             return x / y;
         case '+':
             return x + y;
