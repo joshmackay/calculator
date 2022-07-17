@@ -11,7 +11,16 @@ const equalsButton = document.querySelector('[data-equals]').addEventListener('c
 const deleteButton = document.querySelector('[data-delete]').addEventListener('click', deleteCurrentOperation);
 const clearButton = document.querySelector('[data-clear]').addEventListener('click', clearAll);
 window.addEventListener('keydown', keyPress);
+window.addEventListener('keyup', keyUpToggle);
+const buttonPressMouse = document.querySelectorAll('button');
+const buttonUpMouse = document.querySelectorAll('button');
+const buttonPressKey = document.querySelectorAll('button');
+const buttonUpKey = document.querySelectorAll('button');
 
+buttonPressMouse.forEach(button => 
+    button.addEventListener('mousedown', () => buttonPressed(button)));
+buttonUpMouse.forEach(button => 
+    button.addEventListener('mouseup', () => buttonUpToggle(button)))
 numberButtons.forEach(button => 
     button.addEventListener('click', () => storeNumber(button.textContent)));
 operatorButtons.forEach(button => 
@@ -23,18 +32,31 @@ let currentOperator = null;
 let clearCurrentScreenFlag = false;
 let keyValue = null;
 
+function buttonPressed(e){
+    
+    console.log(e);
+    e.classList.toggle('button-press')
+}
+function buttonUpToggle(e){
+    e.classList.toggle('button-press')
+}
+
 function clearCurrentScreen(){
     currentOperation.innerText = '';
     clearCurrentScreenFlag = false;
 }
 
 function keyPress(e){
-    keyValue = e.key;5
+    keyValue = e.key;
     if(keyValue >= 0 && keyValue <= 9 || keyValue === '.') storeNumber(keyValue)
     if(keyValue === 'Enter' || keyValue === '=') evaluate();
     if(keyValue === 'Backspace') deleteCurrentOperation()
     if(keyValue === '/' || keyValue === '*' || keyValue === '-' || keyValue === '+')setOperation(keyValue);
     if(keyValue === 'Escape')clearAll()
+}
+
+function keyUpToggle(e){
+
 }
 
 function deleteCurrentOperation(){
